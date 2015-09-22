@@ -60,12 +60,15 @@ public class MainActivity extends Activity implements OnItemClickListener {
         phHueSDK.getNotificationManager().registerSDKListener(listener);    // 브릿지로부터 정보를 받기위해 리스너등록
                                                                             // 브릿지가 연결되면 정보를 준다.
 
-        adapter = new AccessPointListAdapter(getApplicationContext(), phHueSDK.getAccessPointsFound()); // MacAddress와 IP가 Adapter에 저장
+        adapter = new AccessPointListAdapter(getApplicationContext(), phHueSDK.getAccessPointsFound()); 
+        // MacAddress와 IP가 Adapter에 저장
 
-        ListView accessPointList = (ListView) findViewById(R.id.bridge_list);   // XML에 있는 리스트를 accessPointList 변수로 선언
-        accessPointList.setOnItemClickListener(this);                           // onClickListener 등록
+        ListView accessPointList = (ListView) findViewById(R.id.bridge_list);   
+        // XML에 있는 리스트를 accessPointList 변수로 선언
+        accessPointList.setOnItemClickListener(this);                           
+        // onClickListener 등록
         accessPointList.setAdapter(adapter);
-        //adapter = new AccessPointListAdapter(getApplicationContext(), phHueSDK.getAccessPointsFound()); 에서 얻은 Adapter 정보를 List에 저장
+        //Adapter 정보를 List에 저장
 
 
         // Try to automatically connect to the last known bridge.  For first time use this will be empty so a bridge search is automatically started.
