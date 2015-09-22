@@ -1,6 +1,8 @@
 package kjw.graduproject.com.huekjw;
 
-
+/*
+copyright by KJW
+ */
 
 import android.app.Activity;
 //import android.support.v7.app.AppCompatActivity;
@@ -11,48 +13,24 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-
+/*
+  처음 시작하는 Activity입니다.
+  이 액티비티에서 3개의 버튼을 클릭시 다른 액티비티로 이동을 합니다.
+ */
 public class VIewControlActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_control);
-//        setTitle("Welcome - Smart Grid With Philipse Hue And KJW");
 
+        // Bridge를 탐색하는 버튼에 대한 이벤트 컨트롤 부분
         Button searchButton = (Button)findViewById(R.id.ButtonToSearch);
         searchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // Perform action on click
-//                Intent toSearch = new Intent(this, MainActivity.class);
-                Intent toSearch = new Intent(getApplicationContext(), MainActivity.class);
-                //getApplicationContext()
-//                downloadIntent.setData(Uri.parse(fileUrl));
+                Intent toSearch = new Intent(getApplicationContext(), MainActivity.class);  // 메인 액티비티(브릿지검색)으로 이동
                 startActivity(toSearch);
             }
-
         });
     }
-
-/*    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_view_control, menu);
-        return true;
-    }*/
-
-/*    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }*/
 }

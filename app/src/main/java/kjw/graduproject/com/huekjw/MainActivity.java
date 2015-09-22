@@ -29,36 +29,42 @@ import com.philips.lighting.model.PHHueParsingError;
 import data.AccessPointListAdapter;
 import data.HueSharedPreferences;
 
+/*
+    브릿지를 찾는 액티비티입니다.
+    브릿지를 찾고 나서 해당 리스트를 클릭시 해당 브릿지와 연결을 하도록 구현되어있습니다.
+ */
 public class MainActivity extends Activity implements OnItemClickListener {
 
     private PHHueSDK phHueSDK;                      // hueSDK 클래스 변수 생성
-    public static final String TAG = "QuickStart";
-    private HueSharedPreferences prefs;
-    private AccessPointListAdapter adapter;
+    public static final String TAG = "statisticsEnergyUsageWithHue";    // 태그에 대한 문자열 상수
+    private HueSharedPreferences prefs;             // preference를 저장하여, Hue에 재접속시 연결을 위한 변수
+    private AccessPointListAdapter adapter;         // 브릿지 정보룰 저장하는 ListAdapter 변수
 
-    private boolean lastSearchWasIPScan = false;
+    private boolean lastSearchWasIPScan = false;    //
 
-    @Override
+    // MainActivity에서 제일 먼저 시작하는 라이프 사이클
+    @Override   
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // Set the Device Name (name of your app). This will be stored in your bridge whitelist entry.
 
-        phHueSDK = PHHueSDK.create();
+        phHueSDK = PHHueSDK.create();                                   // 필립스 휴 SDK에서 팩토리얼 디자인 패턴으로 객체 얻어 옴, 이 객체를 사용하여 브릿지와 연결
 
-        phHueSDK.setAppName("QuickStartApp");           // app name 추후에 변경 ( kjw 식으로)
-        phHueSDK.setDeviceName(android.os.Build.MODEL);
+        phHueSDK.setAppName("statisticsEnergyUsageWithHueApp");           // app name
+        phHueSDK.setDeviceName(android.os.Build.MODEL);                     // android 모델 정보를 브릿지에 저장
 
         // Register the PHSDKListener to receive callbacks from the bridge.
         phHueSDK.getNotificationManager().registerSDKListener(listener);    // 브릿지로부터 정보를 받기위해 리스너등록
                                                                             // 브릿지가 연결되면 정보를 준다.
 
-        adapter = new AccessPointListAdapter(getApplicationContext(), phHueSDK.getAccessPointsFound());
-        // 이 부분에서 MacAddress와 IP가 적혀진다.
+        adapter = new AccessPointListAdapter(getApplicationContext(), phHueSDK.getAccessPointsFound()); // MacAddress와 IP가 Adapter에 저장
 
-        ListView accessPointList = (ListView) findViewById(R.id.bridge_list);
-        accessPointList.setOnItemClickListener(this);
+        ListView accessPointList = (ListView) findViewById(R.id.bridge_list);   // XML에 있는 리스트를 accessPointList 변수로 선언
+        accessPointList.setOnItemClickListener(this);                           // onClickListener 등록
         accessPointList.setAdapter(adapter);
+        //adapter = new AccessPointListAdapter(getApplicationContext(), phHueSDK.getAccessPointsFound()); 에서 얻은 Adapter 정보를 List에 저장
+
 
         // Try to automatically connect to the last known bridge.  For first time use this will be empty so a bridge search is automatically started.
         prefs = HueSharedPreferences.getInstance(getApplicationContext());
