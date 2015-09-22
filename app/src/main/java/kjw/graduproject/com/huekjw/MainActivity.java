@@ -38,7 +38,8 @@ public class MainActivity extends Activity implements OnItemClickListener {
     private PHHueSDK phHueSDK;                      // hueSDK 클래스 변수 생성
     public static final String TAG = "statisticsEnergyUsageWithHue";    // 태그에 대한 문자열 상수
     private HueSharedPreferences prefs;             // preference를 저장하여, Hue에 재접속시 연결을 위한 변수
-    private AccessPointListAdapter adapter;         // 브릿지 정보룰 저장하는 ListAdapter 변수
+                                                    // Hue 에 재접속시 마지막에 저장된 Bridge의 IP로 접속
+    private AccessPointListAdapter adapter;         // 브릿지 정보를 저장하는 ListAdapter 변수
 
     private boolean lastSearchWasIPScan = false;    //
 
@@ -49,7 +50,8 @@ public class MainActivity extends Activity implements OnItemClickListener {
         setContentView(R.layout.activity_main);
         // Set the Device Name (name of your app). This will be stored in your bridge whitelist entry.
 
-        phHueSDK = PHHueSDK.create();                                   // 필립스 휴 SDK에서 팩토리얼 디자인 패턴으로 객체 얻어 옴, 이 객체를 사용하여 브릿지와 연결
+        phHueSDK = PHHueSDK.create();                                   // 필립스 휴 SDK에서 팩토리얼 패턴으로 객체 얻어 옴, 
+                                                                        // 이 객체를 사용하여 브릿지와 연결
 
         phHueSDK.setAppName("statisticsEnergyUsageWithHueApp");           // app name
         phHueSDK.setDeviceName(android.os.Build.MODEL);                     // android 모델 정보를 브릿지에 저장
