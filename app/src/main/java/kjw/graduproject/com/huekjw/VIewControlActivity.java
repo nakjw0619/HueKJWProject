@@ -33,4 +33,9 @@ public class VIewControlActivity extends Activity {
             }
         });
     }
+
+    // Method to start the service
+    public void startService(View view) {
+        startService(new Intent(getBaseContext(), BridgeCheckService.class));
+    }
 }

@@ -44,7 +44,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
     private boolean lastSearchWasIPScan = false;    //
 
     // MainActivity에서 제일 먼저 시작하는 라이프 사이클
-    @Override   
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);

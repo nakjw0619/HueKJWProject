@@ -3,7 +3,7 @@
     package="kjw.graduproject.com.huekjw" >
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.GET_TASKS" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +13,6 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
-
         </activity>
         <activity
             android:name=".VIewControlActivity"
@@ -28,6 +27,20 @@
             android:name=".PHPushlinkActivity"
             android:label="@string/title_activity_phpushlink" >
         </activity>
+
+        <service
+            android:name=".BridgeCheckService"
+            android:exported="false" >
+        </service>
+
+        <!-- Broadcast Receiver -->
+        <receiver android:name=".MyBroadcastReceiver" android:enabled="true" android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
     </application>
 
+    <!-- Adding the permission -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 </manifest>
