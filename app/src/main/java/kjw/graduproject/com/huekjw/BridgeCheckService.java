@@ -116,6 +116,7 @@ public class BridgeCheckService extends IntentService {
      *  데이타 구조
      *  실행 날짜, 실행 월, 현재시간, IsOn Or Is Off (추가 기능 사용 색 및 색에대한 전력량)
      *  전력량 계산은 is on의 시작 시간부터 is off의 시작 시간까지
-     *
+     * jsonparser makeHttpRequest in intentservice android
+     * http://www.serversfree.com/
      */
 }

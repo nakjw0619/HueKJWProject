@@ -36,7 +36,8 @@ import data.HueSharedPreferences;
 public class MainActivity extends Activity implements OnItemClickListener {
 
     private PHHueSDK phHueSDK;                      // hueSDK 클래스 변수 생성
-    public static final String TAG = "statisticsEnergyUsageWithHue";    // 태그에 대한 문자열 상수
+//    public static final String TAG = "statisticsEnergyUsageWithHue";    // 태그에 대한 문자열 상수
+    public static final String TAG = "QuickStart";
     private HueSharedPreferences prefs;             // preference를 저장하여, Hue에 재접속시 연결을 위한 변수
                                                     // Hue 에 재접속시 마지막에 저장된 Bridge의 IP로 접속
     private AccessPointListAdapter adapter;         // 브릿지 정보를 저장하는 ListAdapter 변수
@@ -53,7 +54,8 @@ public class MainActivity extends Activity implements OnItemClickListener {
         phHueSDK = PHHueSDK.create();                                   // 필립스 휴 SDK에서 팩토리얼 패턴으로 객체 얻어 옴, 
                                                                         // 이 객체를 사용하여 브릿지와 연결
 
-        phHueSDK.setAppName("statisticsEnergyUsageWithHueApp");           // app name
+//        phHueSDK.setAppName("statisticsEnergyUsageWithHueApp");           // app name
+        phHueSDK.setAppName("QuickStart");
         phHueSDK.setDeviceName(android.os.Build.MODEL);                     // android 모델 정보를 브릿지에 저장
 
         // Register the PHSDKListener to receive callbacks from the bridge.
@@ -283,11 +285,11 @@ public class MainActivity extends Activity implements OnItemClickListener {
 
     // Starting the main activity this way, prevents the PushLink Activity being shown when pressing the back button.
     public void startMainActivity() {
-//        Intent intent = new Intent(getApplicationContext(), VIewControlActivity.class);
-//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
-//            intent.addFlags(0x8000); // equal to Intent.FLAG_ACTIVITY_CLEAR_TASK which is only available from API level 11
-//        startActivity(intent);
+        Intent intent = new Intent(getApplicationContext(), LightControlActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
+            intent.addFlags(0x8000); // equal to Intent.FLAG_ACTIVITY_CLEAR_TASK which is only available from API level 11
+        startActivity(intent);
     }
 }

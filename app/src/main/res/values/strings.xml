@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">HueKJW</string>
-    <string name="title_activity_view_control">Welcome - Smart Grid With Philipse Hue And KJW</string>
+    <string name="title_activity_view_control">StatisticsEnergyUsage With Hue</string>
 
     <string name="action_settings">Settings</string>
     <string name="no_bridge">No Bridge Found.   Start Bridge Search</string>
@@ -32,4 +32,6 @@
     <string name="title_activity_phpushlink">PHPushlinkActivity</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_light_control">LightControlActivity</string>
+    <string name="title_activity_static_energe_usage_char">StaticEnergeUsageCharActivity</string>
 </resources>
