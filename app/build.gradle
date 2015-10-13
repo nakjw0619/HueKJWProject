@@ -23,5 +23,5 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile files('libs/huelocalsdk.jar')
     compile files('libs/huesdkresources.jar')
-    compile files('libs/achartengine-0.6.0.jar')
+    compile files('libs/achartengine-1.1.0.jar')
 }

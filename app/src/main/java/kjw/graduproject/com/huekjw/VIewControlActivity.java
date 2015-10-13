@@ -32,6 +32,15 @@ public class VIewControlActivity extends Activity {
                 startActivity(toSearch);
             }
         });
+
+        // Bridge를 탐색하는 버튼에 대한 이벤트 컨트롤 부분
+        Button bChartButton = (Button)findViewById(R.id.chartButton);
+        bChartButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent toSearch = new Intent(getApplicationContext(), StaticEnergeUsageCharActivity.class);  // 메인 액티비티(브릿지검색)으로 이동
+                startActivity(toSearch);
+            }
+        });
     }
 
     // Method to start the service
