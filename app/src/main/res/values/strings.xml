@@ -34,4 +34,5 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_light_control">LightControlActivity</string>
     <string name="title_activity_static_energe_usage_char">StaticEnergeUsageCharActivity</string>
+    <string name="title_activity_get_remote_data">GetRemoteDataActivity</string>
 </resources>

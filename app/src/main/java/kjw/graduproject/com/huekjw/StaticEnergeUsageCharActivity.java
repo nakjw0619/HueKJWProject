@@ -37,17 +37,17 @@ public class StaticEnergeUsageCharActivity extends Activity {
         XYMultipleSeriesRenderer renderer = new XYMultipleSeriesRenderer();
 
         // 상단 표시 제목과 글자 크기
-        renderer.setChartTitle("Hue Enery Usage");
-        renderer.setChartTitleTextSize(40);
+        renderer.setChartTitle("Hue Enery Usage on Some Month"); // Month 표시하기
+        renderer.setChartTitleTextSize(60);
 
         // 분류에 대한 이름
-        String[] titles = new String[] { "Monthly Usage" };
+        String[] titles = new String[] { "Days Usage" };
 
         // 항목을 표시하는데 사용될 색상값
-        int[] colors = new int[] { Color.YELLOW };
+        int[] colors = new int[] { Color.GRAY};
 
         // 분류명 글자 크기 및 각 색상 지정
-        renderer.setLegendTextSize(30);
+        renderer.setLegendTextSize(60);
         int length = colors.length;
         for (int i = 0; i < length; i++) {
             SimpleSeriesRenderer r = new SimpleSeriesRenderer();
@@ -56,21 +56,21 @@ public class StaticEnergeUsageCharActivity extends Activity {
         }
 
         // X,Y축 항목이름과 글자 크기
-        renderer.setXTitle("Months");
+        renderer.setXTitle("Days");
         renderer.setYTitle("Times");
-        renderer.setAxisTitleTextSize(24);
+        renderer.setAxisTitleTextSize(30);
 
         // 수치값 글자 크기 / X축 최소,최대값 / Y축 최소,최대값
-        renderer.setLabelsTextSize(10);
-        renderer.setXAxisMin(0.5);
+        renderer.setLabelsTextSize(20);
+        renderer.setXAxisMin(1.5);
         renderer.setXAxisMax(12.5);
-        renderer.setYAxisMin(0);
+        renderer.setYAxisMin(1);
         renderer.setYAxisMax(100);
 
         // X,Y축 라인 색상
         renderer.setAxesColor(Color.WHITE);
         // 상단제목, X,Y축 제목, 수치값의 글자 색상
-        renderer.setLabelsColor(Color.CYAN);
+        renderer.setLabelsColor(Color.BLACK);
 
         // X축의 표시 간격
         renderer.setXLabels(12);
@@ -87,7 +87,7 @@ public class StaticEnergeUsageCharActivity extends Activity {
         // ZOOM 비율
         renderer.setZoomRate(1.0f);
         // 막대간 간격
-        renderer.setBarSpacing(0.5f);
+        renderer.setBarSpacing(1.0f);
 
         // 설정 정보 설정
         XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();

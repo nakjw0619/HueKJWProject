@@ -31,9 +31,25 @@ public class BridgeCheckService extends IntentService {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Toast.makeText(this, "Service Started", Toast.LENGTH_SHORT).show();
-        final String action = intent.getAction();
-        Toast.makeText(this, action, Toast.LENGTH_SHORT).show();
+
+        super.onStartCommand(intent, flags, startId);
+
+//        Toast.makeText(this, "Service Started", Toast.LENGTH_SHORT).show();
+//        final String action = intent.getAction();
+//        Toast.makeText(this, action, Toast.LENGTH_SHORT).show();
+        new Thread(new Runnable() {
+            public void run(){
+                while(true) {
+
+                    try {
+                        new PostActivity(getApplicationContext(), 1).execute();
+                        Thread.sleep(5000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
         return super.onStartCommand(intent, flags, startId);
 
     }
@@ -119,4 +135,7 @@ public class BridgeCheckService extends IntentService {
      * jsonparser makeHttpRequest in intentservice android
      * http://www.serversfree.com/
      */
+
+    // http://rainbowp45.cafe24.com/HueKJWProject/input_data_get.php?HueBulbInfo=1
+    // Get 방식으로 데이타 넣는 법
 }

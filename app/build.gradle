@@ -25,3 +25,11 @@ dependencies {
     compile files('libs/huesdkresources.jar')
     compile files('libs/achartengine-1.1.0.jar')
 }
+
+android {
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+    }
+}

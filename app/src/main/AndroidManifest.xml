@@ -56,6 +56,10 @@
             android:name=".StaticEnergeUsageCharActivity"
             android:label="@string/title_activity_static_energe_usage_char" >
         </activity>
+        <activity
+            android:name=".GetRemoteDataActivity"
+            android:label="@string/title_activity_get_remote_data" >
+        </activity>
     </application>
 
 </manifest>
