@@ -5,8 +5,19 @@
     android:orientation="vertical"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
-    android:theme="@android:style/Theme.Dialog"
-    android:id="@+id/llBody"
     android:minWidth="300dp" >
 
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:id="@+id/editText"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="300dp"
+        android:layout_height="400dp"
+        android:theme="@android:style/Theme.Dialog"
+        android:id="@+id/llBody"
+        ></LinearLayout>
 </LinearLayout>

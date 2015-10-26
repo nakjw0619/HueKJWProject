@@ -32,23 +32,39 @@ public class StaticEnergeUsageCharActivity extends Activity {
 
         // GetRemoteData에서 가져온 값을 넣는다.
         Intent intent=getIntent();
-        ArrayList<String> charData = intent.getStringArrayListExtra("charData");
+//        ArrayList<String> chartData = intent.getStringArrayListExtra("chartData");
+        Bundle extras = getIntent().getExtras();
+        int[] chartData = extras.getIntArray("chartData");
+//        Toast.makeText(getApplicationContext(), chartData.size(), Toast.LENGTH_SHORT).show();
 
-        Toast.makeText(getApplicationContext(), charData.toString(), Toast.LENGTH_SHORT).show();
+        //double[] da = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        double[] da = new double[10];
 
+        for(int i=0; i < 10; i++){
+            da[i] = (double) chartData[i]/(60*60*1000);
+        }
+        //Toast.makeText(getApplicationContext(), chartData.size(), Toast.LENGTH_SHORT).show();
+
+//        for(int i=0; i < chartData.size(); i++) {
+//            da[i] = Double.parseDouble(chartData.get(i));
+//        }
 
 
         // 표시할 수치값
         List<double[]> values = new ArrayList<double[]>();
-        values.add(new double[] { 10, 20, 30, 30, 20, 10,
-                20, 40, 10, 20, 30, 30});
+        values.add(da);
+//        values.add(new double[] { 10, 20, 30, 30, 20, 10,
+//                20, 40, 10, 20, 30, 30});
+
+
 
         /** 그래프 출력을 위한 그래픽 속성 지정객체 */
         XYMultipleSeriesRenderer renderer = new XYMultipleSeriesRenderer();
 
         // 상단 표시 제목과 글자 크기
+//        renderer.setFitLegend(true);
         renderer.setChartTitle("Hue Enery Usage on Recent 10 Days"); // Month 표시하기
-        renderer.setChartTitleTextSize(60);
+        renderer.setChartTitleTextSize(30);
 
         // 분류에 대한 이름
         String[] titles = new String[] { "Days Usage" };
@@ -57,7 +73,7 @@ public class StaticEnergeUsageCharActivity extends Activity {
         int[] colors = new int[] { Color.GRAY};
 
         // 분류명 글자 크기 및 각 색상 지정
-        renderer.setLegendTextSize(60);
+        renderer.setLegendTextSize(30);
         int length = colors.length;
         for (int i = 0; i < length; i++) {
             SimpleSeriesRenderer r = new SimpleSeriesRenderer();
@@ -68,14 +84,14 @@ public class StaticEnergeUsageCharActivity extends Activity {
         // X,Y축 항목이름과 글자 크기
         renderer.setXTitle("Days");
         renderer.setYTitle("Times");
-        renderer.setAxisTitleTextSize(30);
+        renderer.setAxisTitleTextSize(20);
 
         // 수치값 글자 크기 / X축 최소,최대값 / Y축 최소,최대값
         renderer.setLabelsTextSize(20);
-        renderer.setXAxisMin(1.5);
-        renderer.setXAxisMax(12.5);
+        renderer.setXAxisMin(0);
+        renderer.setXAxisMax(10);
         renderer.setYAxisMin(1);
-        renderer.setYAxisMax(100);
+        renderer.setYAxisMax(24);
 
         // X,Y축 라인 색상
         renderer.setAxesColor(Color.WHITE);
