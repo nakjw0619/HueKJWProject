@@ -1,11 +1,13 @@
 package kjw.graduproject.com.huekjw;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.philips.lighting.hue.sdk.utilities.impl.Color;
 
@@ -28,6 +30,14 @@ public class StaticEnergeUsageCharActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_static_energe_usage_char);
 
+        // GetRemoteData에서 가져온 값을 넣는다.
+        Intent intent=getIntent();
+        ArrayList<String> charData = intent.getStringArrayListExtra("charData");
+
+        Toast.makeText(getApplicationContext(), charData.toString(), Toast.LENGTH_SHORT).show();
+
+
+
         // 표시할 수치값
         List<double[]> values = new ArrayList<double[]>();
         values.add(new double[] { 10, 20, 30, 30, 20, 10,
@@ -37,7 +47,7 @@ public class StaticEnergeUsageCharActivity extends Activity {
         XYMultipleSeriesRenderer renderer = new XYMultipleSeriesRenderer();
 
         // 상단 표시 제목과 글자 크기
-        renderer.setChartTitle("Hue Enery Usage on Some Month"); // Month 표시하기
+        renderer.setChartTitle("Hue Enery Usage on Recent 10 Days"); // Month 표시하기
         renderer.setChartTitleTextSize(60);
 
         // 분류에 대한 이름

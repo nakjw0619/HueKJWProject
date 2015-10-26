@@ -43,7 +43,7 @@ public class BridgeCheckService extends IntentService {
 
                     try {
                         new PostActivity(getApplicationContext(), 1).execute();
-                        Thread.sleep(5000);
+                        Thread.sleep(5000*60); // 5분에 1회로 변경
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
