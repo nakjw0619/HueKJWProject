@@ -34,7 +34,7 @@ public class BridgeCheckService extends IntentService {
 
         super.onStartCommand(intent, flags, startId);
 
-        Toast.makeText(this, "Service Started", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "Service Started", Toast.LENGTH_SHORT).show();
 //        final String action = intent.getAction();
 //        Toast.makeText(this, action, Toast.LENGTH_SHORT).show();
         new Thread(new Runnable() {
@@ -43,7 +43,7 @@ public class BridgeCheckService extends IntentService {
 
                     try {
                         new PostActivity(getApplicationContext(), 1).execute();
-                        Thread.sleep(1000*60); // 5분에 1회로 변경
+                        Thread.sleep(5000*60); // 5분에 1회로 변경
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
