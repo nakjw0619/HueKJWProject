@@ -7,6 +7,8 @@ import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.util.List;
+import java.util.Random;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -18,9 +20,17 @@ import android.os.AsyncTask;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.philips.lighting.hue.sdk.PHHueSDK;
+import com.philips.lighting.model.PHBridge;
+import com.philips.lighting.model.PHLight;
+import com.philips.lighting.model.PHLightState;
+
 public class PostActivity extends AsyncTask<String, Void, String> {
+    private PHHueSDK phHueSDK;
+
     private Context context;
     private int byGetOrPost = 0;
+    private String isOnOrOffValue = "0";
 
     //flag 0 means get and 1 means post.(By default it is get.)
     public PostActivity(Context context, int flag) {
@@ -33,10 +43,27 @@ public class PostActivity extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... arg0) {
+
+        phHueSDK = PHHueSDK.create();
+        PHBridge bridge = phHueSDK.getSelectedBridge();
+
+        List<PHLight> allLights = bridge.getResourceCache().getAllLights();
+
+        for (PHLight light : allLights) {
+            PHLightState lightState = new PHLightState();
+            if( lightState.isOn() ) {
+                isOnOrOffValue = "1";
+            }else
+            {
+                isOnOrOffValue = "0";
+            }
+
+        }
+
         try {
 
             String link = "http://rainbowp45.cafe24.com/HueKJWProject/input_data.php"; // POST 주소
-            String data = URLEncoder.encode("HueBulbInfo", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8");
+            String data = URLEncoder.encode("HueBulbInfo", "UTF-8") + "=" + URLEncoder.encode(isOnOrOffValue, "UTF-8");
 
             URL url = new URL(link);
             URLConnection conn = url.openConnection();

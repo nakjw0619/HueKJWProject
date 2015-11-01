@@ -12,6 +12,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.philips.lighting.hue.sdk.PHHueSDK;
+import com.philips.lighting.model.PHBridge;
+import com.philips.lighting.model.PHLight;
+import com.philips.lighting.model.PHLightState;
+
+import java.util.List;
 
 /*
   처음 시작하는 Activity입니다.
@@ -42,8 +50,36 @@ public class VIewControlActivity extends Activity {
                 startActivity(toSearch);
             }
         });
+
+        Button bisOnButton = (Button)findViewById(R.id.isOnButton);
+        bisOnButton .setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                String isOnOrOffValue = "";
+                PHHueSDK phHueSDK;
+                phHueSDK = PHHueSDK.create();
+                PHBridge bridge = phHueSDK.getSelectedBridge();
+
+                List<PHLight> allLights = bridge.getResourceCache().getAllLights();
+
+                for (PHLight light : allLights) {
+                    PHLightState lightState = light.getLastKnownLightState();
+                    if (lightState.isOn()) {
+                        isOnOrOffValue = "1";
+                    } else {
+                        isOnOrOffValue = "0";
+                    }
+
+                }
+
+                Toast.makeText(getApplicationContext(), isOnOrOffValue, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
     }
 
+    // 서비스를 시행하는 부분
     // Method to start the service
     public void startService(View view) {
         startService(new Intent(getBaseContext(), BridgeCheckService.class));

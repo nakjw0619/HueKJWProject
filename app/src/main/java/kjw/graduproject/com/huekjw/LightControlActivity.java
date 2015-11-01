@@ -34,16 +34,16 @@ public class LightControlActivity extends Activity {
         phHueSDK = PHHueSDK.create();
 
         // Button 설정
-//        Button randomButton;
-//        randomButton = (Button) findViewById(R.id.buttonRand);
-//        randomButton.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                randomLights();
-//            }
-//
-//        });
+        Button randomButton;
+        randomButton = (Button) findViewById(R.id.buttonRand);
+        randomButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                randomLights();
+            }
+
+        });
 
     }
 
