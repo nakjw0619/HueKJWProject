@@ -64,7 +64,9 @@ public class VIewControlActivity extends Activity {
 
                 for (PHLight light : allLights) {
                     PHLightState lightState = light.getLastKnownLightState();
+
                     if (lightState.isOn()) {
+//                    if (lightState.isOn() || lightState.isReachable()) {
                         isOnOrOffValue = "1";
                     } else {
                         isOnOrOffValue = "0";

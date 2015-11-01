@@ -33,7 +33,7 @@ public class LightControlActivity extends Activity {
         setContentView(R.layout.activity_light_control);
         phHueSDK = PHHueSDK.create();
 
-        // Button 설정
+        // Random Button 설정
         Button randomButton;
         randomButton = (Button) findViewById(R.id.buttonRand);
         randomButton.setOnClickListener(new View.OnClickListener() {
@@ -41,6 +41,18 @@ public class LightControlActivity extends Activity {
             @Override
             public void onClick(View v) {
                 randomLights();
+            }
+
+        });
+
+        // Off Button 설정
+        Button offButton;
+        offButton = (Button) findViewById(R.id.blightoff);
+        offButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                offLights();
             }
 
         });
@@ -57,10 +69,32 @@ public class LightControlActivity extends Activity {
         for (PHLight light : allLights) {
             PHLightState lightState = new PHLightState();
             lightState.setHue(rand.nextInt(MAX_HUE));
+            lightState.setOn(true);
+
             // To validate your lightstate is valid (before sending to the bridge) you can use:
             // String validState = lightState.validateState();
             bridge.updateLightState(light, lightState, listener);
             //  bridge.updateLightState(light, lightState);   // If no bridge response is required then use this simpler form.
+
+
+        }
+    }
+
+    public void offLights() {
+        PHBridge bridge = phHueSDK.getSelectedBridge();
+
+        List<PHLight> allLights = bridge.getResourceCache().getAllLights();
+
+        for (PHLight light : allLights) {
+            PHLightState lightState = new PHLightState();
+            lightState.setHue(0);
+            lightState.setOn(false);
+
+            // To validate your lightstate is valid (before sending to the bridge) you can use:
+            // String validState = lightState.validateState();
+            bridge.updateLightState(light, lightState, listener);
+            //  bridge.updateLightState(light, lightState);   // If no bridge response is required then use this simpler form.
+
         }
     }
 

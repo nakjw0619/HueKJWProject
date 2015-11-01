@@ -272,7 +272,8 @@ public class GetRemoteDataActivity extends Activity {
                     newmap.put(new Date(fromTenDaysAgoToToday.getTime() - dateListForTen * 24 * 3600 * 1000), 0);
                     chartData.add(newmap);
 //                    intArrayData.add(0);
-                    intArrayData[9 - dateListForTen] = 0;
+//                    intArrayData[9 - dateListForTen] = 0;
+                    intArrayData[dateListForTen] = 0;
                 }else if(on_off_flag == 1) {
                     sum += new Date(fromTenDaysAgoToToday.getTime() - (dateListForTen - 1) * 24 * 3600 * 1000).getTime() - t1.getTime();
                     HashMap<Date, Integer> newmap = new HashMap<Date, Integer>();
@@ -280,14 +281,14 @@ public class GetRemoteDataActivity extends Activity {
                     //chartData.set(dateListForTen, newmap);
                     chartData.add(newmap);
                     //intArrayData.add((int)sum);
-                    intArrayData[9 - dateListForTen] = (int)sum;
+                    intArrayData[dateListForTen] = (int)sum;
                 }else if(on_off_flag == 0) {
                     HashMap<Date, Integer> newmap = new HashMap<Date, Integer>();
                     newmap.put(new Date(fromTenDaysAgoToToday.getTime() - dateListForTen * 24 * 3600 * 1000), (int) sum);
 //                    chartData.set(dateListForTen, newmap);
                     chartData.add(newmap);
                     //intArrayData.add((int)sum);
-                    intArrayData[9 - dateListForTen] = (int)sum;
+                    intArrayData[dateListForTen] = (int)sum;
                     // data는 밀리세컨드 단위로 저장된다.
                     // 시간을 구하기 위해서는 sum / ( 60분 * 60초 * 1000 미리 )을 하면 된다.
                 }

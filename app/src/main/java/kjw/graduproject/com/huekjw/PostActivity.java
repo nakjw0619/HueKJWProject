@@ -50,7 +50,7 @@ public class PostActivity extends AsyncTask<String, Void, String> {
         List<PHLight> allLights = bridge.getResourceCache().getAllLights();
 
         for (PHLight light : allLights) {
-            PHLightState lightState = new PHLightState();
+            PHLightState lightState = light.getLastKnownLightState();
             if( lightState.isOn() ) {
                 isOnOrOffValue = "1";
             }else

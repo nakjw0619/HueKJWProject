@@ -63,11 +63,11 @@ public class StaticEnergeUsageCharActivity extends Activity {
 
         // 상단 표시 제목과 글자 크기
 //        renderer.setFitLegend(true);
-        renderer.setChartTitle("Hue Enery Usage on Recent 10 Days"); // Month 표시하기
+//        renderer.setChartTitle("Hue Enery Usage on Recent 10 Days"); // Month 표시하기
         renderer.setChartTitleTextSize(30);
 
         // 분류에 대한 이름
-        String[] titles = new String[] { "Days Usage" };
+        String[] titles = new String[] { "Hue Enery Usage on Recent 10 Days" };
 
         // 항목을 표시하는데 사용될 색상값
         int[] colors = new int[] { Color.GRAY};
