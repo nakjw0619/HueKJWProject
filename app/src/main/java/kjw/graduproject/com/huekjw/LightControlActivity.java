@@ -70,12 +70,8 @@ public class LightControlActivity extends Activity {
             PHLightState lightState = new PHLightState();
             lightState.setHue(rand.nextInt(MAX_HUE));
             lightState.setOn(true);
-
-            // To validate your lightstate is valid (before sending to the bridge) you can use:
-            // String validState = lightState.validateState();
             bridge.updateLightState(light, lightState, listener);
-            //  bridge.updateLightState(light, lightState);   // If no bridge response is required then use this simpler form.
-
+           
 
         }
     }
@@ -90,15 +86,11 @@ public class LightControlActivity extends Activity {
             lightState.setHue(0);
             lightState.setOn(false);
 
-            // To validate your lightstate is valid (before sending to the bridge) you can use:
-            // String validState = lightState.validateState();
             bridge.updateLightState(light, lightState, listener);
-            //  bridge.updateLightState(light, lightState);   // If no bridge response is required then use this simpler form.
 
         }
     }
 
-    // If you want to handle the response from the bridge, create a PHLightListener object.
     PHLightListener listener = new PHLightListener() {
 
         @Override
